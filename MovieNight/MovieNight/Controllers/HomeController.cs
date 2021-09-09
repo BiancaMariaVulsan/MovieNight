@@ -27,6 +27,11 @@ namespace MovieNight.Controllers
                 {
                     Title = "Chappie",
                     ReleaseYear = 2016
+                }, 
+                new Movie
+                {
+                    Title = "Butterfly Effect",
+                    ReleaseYear = 2005
                 }
             };
 
