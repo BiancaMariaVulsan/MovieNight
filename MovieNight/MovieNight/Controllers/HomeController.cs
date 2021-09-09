@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieNight.Models;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieNight.Controllers
 {
@@ -20,20 +16,21 @@ namespace MovieNight.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var moviesList = new List<Movie>()
+            {
+                new Movie
+                {
+                    Title = "Me Before You",
+                    ReleaseYear = 2020
+                },
+                new Movie
+                {
+                    Title = "Chappie",
+                    ReleaseYear = 2016
+                }
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            string message = "Hi, Bia and Gabi!!!";
-            Console.WriteLine(message);
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(moviesList);
         }
     }
 }
