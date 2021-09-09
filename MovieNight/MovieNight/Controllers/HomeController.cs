@@ -31,7 +31,7 @@ namespace MovieNight.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            string message = "Hi Gabi!";
+            string message = "Hi, Bia and Gabi!";
             Console.WriteLine(message);
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
