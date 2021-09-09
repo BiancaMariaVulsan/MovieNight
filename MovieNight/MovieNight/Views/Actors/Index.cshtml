@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MovieNight.Models.Actor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Actors</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var actor in Model)
+    {
+        <tr>
+            <td>
+                @actor.Age
+            </td>
+            <td>
+                @actor.FirstName
+            </td>
+            <td>
+                @actor.LastName
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
