@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using MovieNight.Models;
 
 namespace MovieNight.Controllers
 {
@@ -10,16 +8,21 @@ namespace MovieNight.Controllers
     {
         public IActionResult Index()
         {
-            int a = 7;
-            a++;
-            Console.WriteLine($"a = {a}");
-            return View();
-        }
+            var moviesList = new List<Movie>()
+            {
+                new Movie
+                {
+                    Title = "Me Before You",
+                    ReleaseYear = 2020
+                },
+                new Movie
+                {
+                    Title = "Chappie",
+                    ReleaseYear = 2016
+                }
+            };
 
-        public int ReturnSmth()
-        {
-            Console.WriteLine(" I don't know what I am doing...");
-            return -4;
+            return View(moviesList);
         }
     }
 }

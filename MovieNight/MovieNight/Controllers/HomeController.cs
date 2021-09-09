@@ -16,26 +16,7 @@ namespace MovieNight.Controllers
 
         public IActionResult Index()
         {
-            var moviesList = new List<Movie>()
-            {
-                new Movie
-                {
-                    Title = "Me Before You",
-                    ReleaseYear = 2020
-                },
-                new Movie
-                {
-                    Title = "Chappie",
-                    ReleaseYear = 2016
-                }, 
-                new Movie
-                {
-                    Title = "Butterfly Effect",
-                    ReleaseYear = 2005
-                }
-            };
-
-            return View(moviesList);
+            return View();
         }
     }
 }
