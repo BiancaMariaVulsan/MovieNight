@@ -4,9 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/actors-page-style.css"/>
+} 
+
 <h1>Actors</h1>
 <h3>@Model.Message</h3>
-<div>The average age of the actors is @Model.AgeAverage</div>
+<div class="text-area">The average age of the actors is @Model.AgeAverage</div>
 
 <table class="table">
     <thead>
@@ -24,19 +28,19 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var actor in Model.Actors)
-    {
-        <tr>
-            <td>
-                @actor.Age
-            </td>
-            <td>
-                @actor.FirstName
-            </td>
-            <td>
-                @actor.LastName
-            </td>
-        </tr>
-    }
+        @foreach (var actor in Model.Actors)
+        {
+            <tr>
+                <td>
+                    @actor.Age
+                </td>
+                <td>
+                    @actor.FirstName
+                </td>
+                <td>
+                    @actor.LastName
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
