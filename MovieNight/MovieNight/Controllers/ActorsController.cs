@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using MovieNight.Data.Database;
 using MovieNight.Data.Models;
+using MovieNight.Data.ViewModels;
 
 namespace MovieNight.Controllers
 {
@@ -25,9 +26,14 @@ namespace MovieNight.Controllers
                 }
             };
 
+            var viewModel = new ActorsViewModel
+            {
+                Actors = actorsList,
+                AgeAverage = actorsList.Average(a => a.Age),
+                Message = "Hi!"
+            };
 
-            Database.Actors = actorsList;
-            return View();
+            return View(viewModel);
         }
     }
 }

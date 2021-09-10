@@ -1,10 +1,12 @@
-﻿@using MovieNight.Data.Database 
+﻿@model MovieNight.Data.ViewModels.IActorsViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Actors</h1>
+<h3>@Model.Message</h3>
+<div>The average age of the actors is @Model.AgeAverage</div>
 
 <table class="table">
     <thead>
@@ -22,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var actor in Database.Actors)
+    @foreach (var actor in Model.Actors)
     {
         <tr>
             <td>
