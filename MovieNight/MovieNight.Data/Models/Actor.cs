@@ -1,4 +1,4 @@
-﻿namespace MovieNight.Models
+﻿namespace MovieNight.Data.Models
 {
     public class Actor
     {

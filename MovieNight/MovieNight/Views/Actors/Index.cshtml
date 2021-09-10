@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MovieNight.Models.Actor>
+﻿@using MovieNight.Data.Database 
 
 @{
     ViewData["Title"] = "Index";
@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var actor in Model)
+    @foreach (var actor in Database.Actors)
     {
         <tr>
             <td>

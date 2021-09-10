@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using MovieNight.Models;
+using MovieNight.Data.Database;
+using MovieNight.Data.Models;
 
 namespace MovieNight.Controllers
 {
@@ -24,7 +25,9 @@ namespace MovieNight.Controllers
                 }
             };
 
-            return View(actorsList);
+
+            Database.Actors = actorsList;
+            return View();
         }
     }
 }

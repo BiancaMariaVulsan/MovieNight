@@ -1,10 +1,12 @@
-﻿@model IEnumerable<MovieNight.Models.Movie>
+﻿@model MovieNight.Data.ViewModels.IMoviesViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Movies</h1>
+<h1>Movies for you, @Model.Name</h1>
+
+<h3>There are @Model.MoviesCount movies for you, enjoy!</h3>
 
 <table class="table">
     <thead>
@@ -19,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
+        @foreach (var movie in Model.Movies)
         {
             <tr>
                 <td>

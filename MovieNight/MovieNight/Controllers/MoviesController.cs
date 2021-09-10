@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using MovieNight.Models;
+using MovieNight.Data.Database;
+using MovieNight.Data.Models;
+using MovieNight.Data.ViewModels;
 
 namespace MovieNight.Controllers
 {
@@ -22,7 +24,14 @@ namespace MovieNight.Controllers
                 }
             };
 
-            return View(moviesList);
+            var viewModel = new MoviesViewModel
+            {
+                Movies = moviesList,
+                Name = "Bia",
+                MoviesCount = moviesList.Count
+            };
+
+            return View(viewModel);
         }
     }
 }
