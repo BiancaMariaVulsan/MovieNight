@@ -1,28 +1,52 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using MovieNight.Data.Database;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MovieNight.Data.Models;
 using MovieNight.Data.ViewModels;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace MovieNight.Controllers
 {
     public class MoviesController : Controller
     {
+        private readonly IConfiguration _configuration;
+
+        public MoviesController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public IActionResult Index()
         {
-            var moviesList = new List<Movie>()
+            string connectionString = _configuration.GetConnectionString("moviesDbConnectionString");
+            var connection = new SqlConnection
             {
-                new Movie
-                {
-                    Title = "Me Before You",
-                    ReleaseYear = 2020
-                },
-                new Movie
-                {
-                    Title = "Chappie",
-                    ReleaseYear = 2016
-                }
+                ConnectionString = connectionString
             };
+
+            var selectAllMoviesCommand = new SqlCommand
+            {
+                CommandText = "SELECT * FROM Movie",
+                Connection = connection
+            };
+
+            var moviesList = new List<Movie>();
+
+            connection.Open();
+            using (var reader = selectAllMoviesCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var movie = new Movie
+                    {
+                        Id = int.Parse(reader[0].ToString()),
+                        Title = reader[1].ToString(),
+                        ReleaseYear = int.Parse(reader[2].ToString())
+                    };
+
+                    moviesList.Add(movie);
+                }
+            }
+            connection.Close();
 
             var viewModel = new MoviesViewModel
             {
